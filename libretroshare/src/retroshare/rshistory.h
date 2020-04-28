@@ -25,6 +25,10 @@
 class RsHistory;
 class ChatId;
 
+/**
+ * @brief Pointer to retroshare's  message history. Provides an interface for retroshare's message history functionality
+ * @jsonapi{development}
+ */
 extern RsHistory *rsHistory;
 
 #include <string>
@@ -70,6 +74,14 @@ public:
 class RsHistory
 {
 public:
+	/**
+	 * @brief getMessages
+	 * @jsonapi{development}
+	 * @param[in] chatPeerId
+	 * @param[out] msgs
+	 * @param[in] loadCount
+	 * @return true on success
+	 */
     virtual bool getMessages(const ChatId &chatPeerId, std::list<HistoryMsg> &msgs, uint32_t loadCount) = 0;
 	virtual bool getMessage(uint32_t msgId, HistoryMsg &msg) = 0;
 	virtual void removeMessages(const std::list<uint32_t> &msgIds) = 0;
